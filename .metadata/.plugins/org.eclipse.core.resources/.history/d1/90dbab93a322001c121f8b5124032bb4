@@ -1,0 +1,12 @@
+package com.savindu.databasePkg;
+
+import java.sql.SQLException;
+
+public class Appoinment extends Database{
+
+	public Appoinment() throws SQLException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+}

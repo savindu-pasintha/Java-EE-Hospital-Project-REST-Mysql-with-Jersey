@@ -1,0 +1,5 @@
+package modelsPkg;
+
+public class LoginModel {
+
+}

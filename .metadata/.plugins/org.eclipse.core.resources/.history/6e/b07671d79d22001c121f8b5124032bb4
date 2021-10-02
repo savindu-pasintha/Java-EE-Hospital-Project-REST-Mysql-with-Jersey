@@ -1,0 +1,28 @@
+package com.savindu.databasePkg;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class Doctor extends Database{
+
+	public Doctor() throws SQLException {
+		super();
+	}
+	
+	public void read() throws SQLException {
+		 ResultSet  resultSe = super.read("SELECT * FROM doctors");
+		   while(resultSe.next()) {
+			   System.out.println(resultSe.getString("id"));
+			   /*
+			    resultSe.getString("id")
+			    resultSe.getString("name");
+			    resultSe.getString("position")
+			    resultSe.getString("hospital")
+			    resultSe.getString("specialization")
+			    resultSe.getString("call")
+			    */
+		   }
+		  super.conn.close();
+	}
+
+}

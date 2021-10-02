@@ -1,0 +1,57 @@
+package com.savindu.databasePkg;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class Login extends Database {
+	
+	public Login() throws SQLException {
+		super();
+	}
+
+	public void read() throws SQLException {
+		   ResultSet  resultSe = super.read("SELECT * FROM `login`");
+		   if(resultSet != null) {
+			   while(resultSe.next()) {
+				   System.out.println(resultSe.getInt("id"));
+			   }
+		   }
+		 
+		  super.conn.close();  
+	}
+	
+	public boolean add(String username, String password) throws SQLException {
+		  super.update("INSERT INTO `login` (`id`, `username`, `password`, `timestamp`) VALUES (?,?,?,?)");
+		  super.pStatment.setInt(1,0);
+		  super.pStatment.setString(2,username);
+		  super.pStatment.setString(3,password);
+		  super.pStatment.setString(4,null);
+		  System.out.println(super.executeQuery()); 
+		  return super.executeQuery();
+		  //id:autoincrement int
+	}
+	
+	public void update(String username, String password,int id) throws SQLException {
+		  super.update("UPDATE `login` SET `username`=?, `password`=?, WHERE id=?");
+		  super.pStatment.setString(1,username);
+		  super.pStatment.setString(2,password);
+		  super.pStatment.setInt(3,id);
+		  System.out.println(super.executeQuery()); 
+		  return super.executeQuery();
+	}
+	
+	
+
+	public static void main(String[] args) throws SQLException {
+	
+		     
+				Login l = new Login();
+				l.read();
+				
+				Login k = new Login();
+				k.update();
+		
+		
+	}
+
+}

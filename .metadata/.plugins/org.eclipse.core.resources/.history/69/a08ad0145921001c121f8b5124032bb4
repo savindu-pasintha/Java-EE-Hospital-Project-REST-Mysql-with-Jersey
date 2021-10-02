@@ -1,0 +1,31 @@
+package com.savindu.databasePkg;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class Login extends Database {
+	
+	public Login() throws SQLException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public void m() throws SQLException {
+	
+		   System.out.println(" XAMPP SERVER MYSQL DATABASE CONNCTED. ");
+		   resultSet = super.read("SELECT * FROM 'sales'");
+		   while(resultSet.next()) {
+			   System.out.println(resultSet.getInt("id"));
+		   }
+		   
+	}
+
+	public static void main(String[] args) throws SQLException {
+	
+				Login l = new Login();
+				l.m();
+		
+		
+	}
+
+}

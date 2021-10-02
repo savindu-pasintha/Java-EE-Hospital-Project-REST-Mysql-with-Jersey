@@ -1,0 +1,26 @@
+package com.savindu.databasePkg;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class Centers extends Database{
+
+	public Centers() throws SQLException {
+		super();
+	}
+	
+	public void read() throws SQLException {
+		 ResultSet  resultSe = super.read("SELECT * FROM centers");
+		   while(resultSe.next()) {
+			   System.out.println(resultSe.getString("id"));
+			   /*
+			    resultSe.getString("id")
+			    resultSe.getString("name");
+			    resultSe.getString("location")
+			   
+			    */
+		   }
+		  super.conn.close();
+	}
+
+}

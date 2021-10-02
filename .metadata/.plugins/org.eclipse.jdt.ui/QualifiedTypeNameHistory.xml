@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.sql.ResultSet"/>
+    <fullyQualifiedTypeName name="jakarta.ws.rs.POST"/>
+    <fullyQualifiedTypeName name="connectRestServer.ConnectinServer"/>
+    <fullyQualifiedTypeName name="okhttp3.RequestBody"/>
+    <fullyQualifiedTypeName name="okhttp3.MediaType"/>
+    <fullyQualifiedTypeName name="jakarta.ws.rs.PathParam"/>
+    <fullyQualifiedTypeName name="com.savindu.databasePkg.Doctor"/>
+    <fullyQualifiedTypeName name="com.savindu.databasePkg.Appoinment"/>
+    <fullyQualifiedTypeName name="jakarta.ws.rs.core.Response"/>
+    <fullyQualifiedTypeName name="com.savindu.databasePkg.Database"/>
+    <fullyQualifiedTypeName name="com.savindu.databasePkg.Login"/>
+</qualifiedTypeNameHistroy>

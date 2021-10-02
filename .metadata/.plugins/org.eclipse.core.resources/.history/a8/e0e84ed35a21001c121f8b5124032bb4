@@ -1,0 +1,37 @@
+package com.savindu.databasePkg;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class Login extends Database {
+	
+	public Login() throws SQLException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public void m() throws SQLException {
+		   ResultSet  resultSe = super.read("SELECT * FROM sales");
+		   while(resultSe.next()) {
+			   System.out.println(resultSe.getInt("id")+"ll");
+		   }
+		  super.conn.close();
+		   
+	}
+	
+	public void u() throws SQLException {
+		  super.update("UPDATE sales SET user_id=? WHERE id=?");
+		  super.pStatment.setInt(0, 4554);
+		  super.pStatment.setInt(1, 9);
+		System.out.println(resultSe.getInt("id")+"ll");  
+	}
+
+	public static void main(String[] args) throws SQLException {
+	
+				Login l = new Login();
+				l.m();
+		
+		
+	}
+
+}

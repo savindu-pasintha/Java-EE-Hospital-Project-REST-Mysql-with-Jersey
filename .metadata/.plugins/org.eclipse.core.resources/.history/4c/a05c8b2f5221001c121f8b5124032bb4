@@ -1,0 +1,132 @@
+package com.savindu.databasePkg;
+
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javax.swing.table.DefaultTableModel;
+
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.PreparedStatement;
+import com.mysql.jdbc.ResultSetMetaData;
+
+public class Database {
+	private static final String urldb = "jdbc:mysql://localhost:3306/ecomm";
+	private static final String usernamedb = "root";
+	private static final String passworddb = "";
+
+	public Connection conn = null;
+	public PreparedStatement pStatment;
+	public ResultSet resultSet = null;
+	public DefaultTableModel model;
+	public ResultSetMetaData rss;
+
+	public String selectquery;
+	public String deletequery;
+	public String updatequery;
+	public String addquery;
+
+	public Database() throws SQLException {
+		try {
+			conn = (Connection) DriverManager.getConnection(urldb, usernamedb, passworddb);
+			System.out.println(" XAMPP SERVER MYSQL DATABASE CONNCTED. ");
+
+		} catch (SQLException ex) {
+			Logger.getLogger(DatabaseConnect.class.getName()).log(Level.SEVERE, null, ex);
+		}
+	}
+
+	public ResultSet read(String selectQuery) {
+		System.out.println(" read() ");
+		try {
+			pStatment = (PreparedStatement) conn.prepareStatement(selectQuery);
+			resultSet = pStatment.executeQuery();
+			 conn.close();
+		} catch (SQLException ex) {
+			Logger.getLogger(DatabaseConnect.class.getName()).log(Level.SEVERE, null, ex);
+		}
+		return resultSet;
+	}
+
+	public boolean add(String insertQuery) {
+		System.out.println(" add() ");
+		try {
+			pStatment = (PreparedStatement) conn.prepareStatement(insertQuery);
+		} catch (SQLException ex) {
+			Logger.getLogger(DatabaseConnect.class.getName()).log(Level.SEVERE, null, ex);
+		}
+
+		return false;
+	}
+
+	public boolean update(String updateQuery) {
+		boolean x=false;
+		try {
+			System.out.println(updateQuery);
+			pStatment = (PreparedStatement) conn.prepareStatement(updateQuery);
+			pStatment.setInt(1,88000000);
+			pStatment.setInt(2,9);
+			
+			if (pStatment.executeUpdate() == 1) {
+				System.out.println("EXECUTED QUERY updated");
+			 x=true;
+			} else {
+				System.out.println("Opps Errors Execute Query.........?");
+			 x=false;
+			}
+			conn.close();
+		} catch (SQLException ex) {
+			Logger.getLogger(DatabaseConnect.class.getName()).log(Level.SEVERE, null, ex);
+		}
+		return x;
+		
+	}
+
+	public boolean delete(String deleteQuery) {
+		System.out.println(" delete() ");
+		try {
+			pStatment = (PreparedStatement) conn.prepareStatement(deleteQuery);
+		} catch (SQLException ex) {
+
+			Logger.getLogger(DatabaseConnect.class.getName()).log(Level.SEVERE, null, ex);
+		}
+
+		return false;
+	}
+
+	public ResultSet search(String selectQuery) {
+		System.out.println(" read() ");
+		try {
+			pStatment = (PreparedStatement) conn.prepareStatement(selectQuery);
+			resultSet = pStatment.executeQuery();
+
+		} catch (SQLException ex) {
+			Logger.getLogger(DatabaseConnect.class.getName()).log(Level.SEVERE, null, ex);
+		}
+		return resultSet;
+	}
+
+	public static void main(String[] args) {
+
+		try {
+		
+			//ResultSet rs = new Database().read("SELECT * FROM sales");
+			//while (rs.next()) {
+				//System.out.print(rs.getString("pay_id") + "\n");
+			//}
+		
+			
+			
+			String up ="UPDATE `sales` SET `user_id` = ? WHERE `id` = ?"; // "UPDATE sales set user_id=? , pay_id=? Where id=? ";
+			System.out.print(new Database().update(up));
+			
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}
